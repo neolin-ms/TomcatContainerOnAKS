@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomact0-deployment
+  labels:
+    app: tomact0-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomact0
+  template:
+    metadata:
+      labels:
+        app: tomact0
+    spec:
+      containers:
+      - name: tomact
+        image: myACR0621.azurecr.io/tomact:v1
+        ports:
+        - containerPort: 8080
