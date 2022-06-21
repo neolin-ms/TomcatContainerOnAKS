@@ -179,7 +179,7 @@ az acr repository show-tags --name $MYACR --repository tomact --output table
 Example output:<br>
 ![5-1.png](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/5-1.png)
 ## 6. Deploy a tomcat application on your AKS
-Step.1 Create a file called acr-tomact-all-in-one.yaml that contains the following. Here is i[example file](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/ExampleFiles/acr-tomcat-all-in-one.yaml).Replace acr-name with your ACR name.<br>
+Step.1 Create a file called 'acr-tomact-all-in-one.yaml' that contains the following. Here is [example file](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/ExampleFiles/acr-tomcat-all-in-one.yaml).Replace acr-name with your ACR name.<br>
 ```bash
 apiVersion: apps/v1
 kind: Deployment
