@@ -36,7 +36,7 @@ Step.2 Get the AKS clistercredentials.<br>
 ```bash
 az aks get-credentials -g $MYRG -n $MYAKS
 ```
-Step.3 Create a file called *`acr-nginx.yaml`* that containers the following. Replace the acr-name with your ACR name.<br>
+Step.3 Create a file called *`acr-nginx.yaml`* that containers the following. Here is [example file](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/ExampleFiles/acr-nginx.yaml). Replace the acr-name with your ACR name.<br>
 ```bash
 apiVersion: apps/v1
 kind: Deployment
