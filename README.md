@@ -74,8 +74,6 @@ Step1. Clone the GitHub repository on your laptop or local computer (with Docker
 git clone https://github.com/Azure/tomcat-container-quickstart.git
 cd tomcat-container-quickstart
 ```
-Example output:<br>
-![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/3-1.png)
 Step.2. Check the Dockerfile of root of the repository, and the TOMACT_VERSION is 9.0.38. Build the docker image.<br>
 ```bash
 docker build . -t tomcat
@@ -90,6 +88,8 @@ docker ps
 Example output:<br>
 ![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/3-3.png)
 Step.4 Once the tomact application container is running, navigate to http://localhost:8080 in you browser. You should see the application come up.<br>
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/3-4.png)
 ## 4. Push images to registry
 Step.1 To use the ACR instance, you must first log in.<br>
 ```bash
