@@ -73,7 +73,7 @@ Step1. Clone the GitHub repository on your laptop or local computer (with Docker
 git clone https://github.com/Azure/tomcat-container-quickstart.git
 cd tomcat-container-quickstart
 ```
-Step.2 Check the Dockerfile of root of the repository, and the TOMACT_VERSION is 9.0.38. Here is [example file](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/ExampleFiles/Dockerfile). Build the docker image.<br>
+Step.2 Check the Dockerfile of root of the repository, and the `TOMACT_VERSION` is 9.0.38. Here is [example file](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/ExampleFiles/Dockerfile). Build the docker image.<br>
 ```bash
 FROM mcr.microsoft.com/openjdk/jdk:11-ubuntu
 ARG APP_FILE=ROOT.war
@@ -178,7 +178,7 @@ az acr repository show-tags --name $MYACR --repository tomact --output table
 Example output:<br>
 ![5-1.png](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/5-1.png)
 ## 6. Deploy a tomcat application on your AKS
-Step.1 Create a file called 'acr-tomact-all-in-one.yaml' that contains the following. Here is [example file](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/ExampleFiles/acr-tomcat-all-in-one.yaml).Replace acr-name with your ACR name.<br>
+Step.1 Create a file called *`acr-tomact-all-in-one.yaml`* that contains the following. Here is [example file](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/ExampleFiles/acr-tomcat-all-in-one.yaml).Replace `<acr-name>` with your ACR name.<br>
 ```bash
 apiVersion: apps/v1
 kind: Deployment
