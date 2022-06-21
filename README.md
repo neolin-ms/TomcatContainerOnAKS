@@ -81,6 +81,7 @@ docker build . -t tomcat
 Step.3 Run the image on your laptop or local computer for confirm the tomact applicationi is work.<br>
 ```bash
 docker run -p8080:8080 -d tomcat
+docker ps
 ```
 Step.4 Once the tomact application container is running, navigate to http://localhost:8080 in you browser. You should see the application come up.<br>
 ## 4. Push images to registry
@@ -98,23 +99,20 @@ az acr list --resource-group $MYRG --query "[].{acrLoginServer:loginServer}" --o
 ```
 Step.4 Tag your local tomcat image with the acrLoginServer address of the container register. Then verify the tags are applied.<br>
 ```bash
-docker tag tomact:latest myacr0621.azurecr.io/tomact:v1
+docker tag tomcat:latest myacr0621.azurecr.io/tomcat:v1
 docker images
 ```
 Step.5 Push the tomcat image to your ACR instance. It may take a few minutes to complete the image push to ACR.<br>
 ```bash
-docker push myacr0621.azurecr.io/tomact:v1
+docker push myacr0621.azurecr.io/tomcat:v1
 ```
 ## 5. List images in Azure Container Registry
-Step.1 List images on your ACR.<br>
+Step.1 List images on your ACR. See the tages for a specific image, e.g., Tomcat.<br>
 ```bash
 az acr repository list --name $MYACR --output table
-```
-Step.2 See the tages for a specific image, e.g., Tomcat.<br>
-```bash
 az acr repository show-tags --name $MYACR --repository tomact --output table
 ```
-## 6. Deploy the tomcat application on your AKS
+## 6. Deploy a tomcat application on your AKS
 Step.1 Create a file called acr-tomact-all-in-one.yaml that contains the following.<br>
 ```bash
 apiVersion: apps/v1
@@ -150,12 +148,9 @@ spec:
   selector:
     app: tomcat0
 ```
-Step.2 Deploy a tomcat application in your AKS cluster.<br>
+Step.2 Deploy a tomcat application in your AKS cluster. Check the deployment, you should have 2 pods and 1 service.<br>
 ```bash
 kubectl apply -f acr-tomcat-all-in-one.yaml
-```
-Step.3 Check the deployment, you should have 2 pods and 1 service.<br>
-```bash
 kubectl get pods,svc
 ```
-Step.4 Once the containers are running, navidate to http://<EXTERNAL_IP:8080> in your browser. You should see the tomcat application come up.
+Step.3 Once the containers are running, navidate to http://<EXTERNAL_IP:8080> in your browser. You should see the tomcat application come up.
