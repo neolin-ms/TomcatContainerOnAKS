@@ -60,14 +60,13 @@ spec:
         ports:
         - containerPort: 80
 ```
-Step.4 Deploy a nginx Pod in your AKS cluster.<br>
+Step.4 Deploy a nginx Pod in your AKS cluster. Check the deployment, you should have 2 running pods.<br>
 ```bash
 kubectl apply -f acr-nginx.yaml
-```
-Step.5 Check the deployment and you should have 2 running pods.<br>
-```bash
 kubectl get pods
 ```
+Example output:<br>
+![2-4.png](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/2-4.png)
 ## 3. Prepare tomac application(by Dockerfile) for AKS
 Step1. Clone the GitHub repository on your laptop or local computer (with Docker Desktop) and navigate into the root of the repository.<br>
 ```bash
