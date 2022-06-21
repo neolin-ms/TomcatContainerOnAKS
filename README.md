@@ -127,7 +127,7 @@ CMD ["/startup.sh"]
 docker build . -t tomcat
 ```
 Example output:<br>
-![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/3-2.png)
+![3-2](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/3-2.png)
 Step.3 Run the image on your laptop or local computer for confirm the tomact applicationi is work.<br>
 ```bash
 docker run -p8080:8080 -d tomcat
