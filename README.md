@@ -80,40 +80,56 @@ Step.2. Check the Dockerfile of root of the repository, and the TOMACT_VERSION i
 ```bash
 docker build . -t tomcat
 ```
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/3-2.png)
 Step.3 Run the image on your laptop or local computer for confirm the tomact applicationi is work.<br>
 ```bash
 docker run -p8080:8080 -d tomcat
 docker ps
 ```
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/3-3.png)
 Step.4 Once the tomact application container is running, navigate to http://localhost:8080 in you browser. You should see the application come up.<br>
 ## 4. Push images to registry
 Step.1 To use the ACR instance, you must first log in.<br>
 ```bash
 az acr login --name $MYACR
 ```
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/4-1.png)
 Step.2 List of your current local images and find the tomcat - container image.<br>
 ```bash
 docker images
 ```
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/4-2.png)
 Step.3 To get the login server address.<br>
 ```bash
 az acr list --resource-group $MYRG --query "[].{acrLoginServer:loginServer}" --output table
 ```
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/4-3.png)
 Step.4 Tag your local tomcat image with the acrLoginServer address of the container register. Then verify the tags are applied.<br>
 ```bash
 docker tag tomcat:latest myacr0621.azurecr.io/tomcat:v1
 docker images
 ```
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/4-4.png)
 Step.5 Push the tomcat image to your ACR instance. It may take a few minutes to complete the image push to ACR.<br>
 ```bash
 docker push myacr0621.azurecr.io/tomcat:v1
 ```
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/4-5.png)
 ## 5. List images in Azure Container Registry
 Step.1 List images on your ACR. See the tages for a specific image, e.g., Tomcat.<br>
 ```bash
 az acr repository list --name $MYACR --output table
 az acr repository show-tags --name $MYACR --repository tomact --output table
 ```
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/5-1.png)
 ## 6. Deploy a tomcat application on your AKS
 Step.1 Create a file called acr-tomact-all-in-one.yaml that contains the following.<br>
 ```bash
@@ -155,4 +171,8 @@ Step.2 Deploy a tomcat application in your AKS cluster. Check the deployment, yo
 kubectl apply -f acr-tomcat-all-in-one.yaml
 kubectl get pods,svc
 ```
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/6-2.png)
 Step.3 Once the containers are running, navidate to http://<EXTERNAL_IP:8080> in your browser. You should see the tomcat application come up.
+Example output:<br>
+![image](https://github.com/neolin-ms/TomcatContainerOnAKS/blob/main/Pics/6-3.png)
